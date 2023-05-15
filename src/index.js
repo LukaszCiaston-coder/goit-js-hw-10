@@ -82,12 +82,13 @@ function renderCountryList(countries) {
 }
 
 function displayCountryInfo(country) {
-
+  console.log(country.languages)
+  const languages = Object.values(country.languages).join(', ');
   countryInfo.innerHTML = `
     <h2>${country.name.official}</h2>
     <p>Capital: ${country.capital}</p>
     <p>Population: ${country.population}</p>
-    <p>Languages: ${country.languages}</p>
+    <p>Languages: ${languages}</p>
     <img src="${country.flags.svg}" alt="${country.name.official} flag" class="flag">
   `;
 }
