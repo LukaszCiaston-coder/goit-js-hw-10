@@ -35,8 +35,8 @@ const handleSearch = debounce(async () => {
   } catch (error) {
     const errorMessage =
       error.message === 'Country not found'
-        ? 'Oops, there is no country with that name.'
-        : 'An error occurred. Please try again later.';
+        ? 'An error occurred. Please try again later.'
+        : 'Oops, there is no country with that name.';
     Notiflix.Notify.failure(errorMessage);
   }
 }, DEBOUNCE_DELAY);
@@ -82,13 +82,14 @@ function renderCountryList(countries) {
 }
 
 function displayCountryInfo(country) {
-  console.log(country.languages)
   const languages = Object.values(country.languages).join(', ');
   countryInfo.innerHTML = `
-    <h2>${country.name.official}</h2>
-    <p>Capital: ${country.capital}</p>
-    <p>Population: ${country.population}</p>
-    <p>Languages: ${languages}</p>
-    <img src="${country.flags.svg}" alt="${country.name.official} flag" class="flag">
+    <h2>
+      <img src="${country.flags.svg}" alt="${country.name.official} flag" class="flag">
+      ${country.name.official}
+    </h2>
+    <p><strong>Capital:</strong> <em>${country.capital}</em></p>
+    <p><strong>Population:</strong> <em>${country.population}</em></p>
+    <p><strong>Languages:</strong> <em>${languages}</em></p>
   `;
 }

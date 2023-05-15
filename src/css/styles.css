@@ -7,7 +7,10 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  background-image: url('../image/map.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   color: #212121;
   line-height: 1.5;
 }
@@ -17,14 +20,41 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  padding-left: 30px;
+  background: url('../image/planet.svg') no-repeat 5px center;
+  background-size: 20px 20px;
 }
 
-.flag{
+li img.flag{
   height: 20px;
-  width: 20px;
+  width: 30px;
   margin-right: 10px;
+}
+
+div img.flag{
+  height: 35px;
+  width: 40px;
 }
 
 li{
   list-style: none;
 }
+.flag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+  
+    
