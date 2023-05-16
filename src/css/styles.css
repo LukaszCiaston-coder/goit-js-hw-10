@@ -30,6 +30,13 @@ body {
   background-size: 20px 20px;
   margin-top: 20px;
   margin-left: 20px;
+  border: 2px solid black;
+}
+
+#search-box:focus {
+  outline: none;
+  border-color: rgb(0, 247, 255);
+  box-shadow: 0 0 3px 1px rgb(0, 247, 255);
 }
 
 li img.flag {
@@ -61,6 +68,6 @@ em {
   font-style: italic;
 }
 
-.country-info{
+.country-info {
   margin-left: 20px;
 }
