@@ -1,3 +1,4 @@
+"use strict"
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
 import debounce from 'lodash.debounce';
@@ -16,21 +17,36 @@ const handleSearch = debounce(async () => {
   countryInfo.innerHTML = '';
 
   if (searchTerm === '') {
+    countryList.style.display = 'block'; 
     return;
   }
 
   try {
     const countries = await fetchCountries(searchTerm);
-    const matchingCountries = countries.filter((country) =>
-      country.name.official.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const exactMatch = countries.find(
+      (country) => country.name.official.toLowerCase() === searchTerm.toLowerCase()
     );
 
-    if (matchingCountries.length === 0) {
-      Notiflix.Notify.failure('Oops, there is no country with that name.');
-    } else if (matchingCountries.length === 1) {
-      renderCountryList(matchingCountries[0]);
+    if (exactMatch) {
+      renderCountryList(exactMatch);
+      displayCountryInfo(exactMatch);
+      countryList.style.display = 'none'; 
     } else {
-      renderCountryList(matchingCountries);
+      const matchingCountries = countries.filter((country) =>
+        country.name.official.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      if (matchingCountries.length === 0) {
+        Notiflix.Notify.failure('Oops, there is no country with that name.');
+      } else if (matchingCountries.length === 1) {
+        renderCountryList(matchingCountries[0]);
+        displayCountryInfo(matchingCountries[0]);
+        countryList.style.display = 'none'; 
+      } else {
+        renderCountryList(matchingCountries);
+        countryList.style.display = 'block'; 
+      }
     }
   } catch (error) {
     const errorMessage =
