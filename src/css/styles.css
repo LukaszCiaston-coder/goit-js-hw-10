@@ -30,13 +30,14 @@ body {
   background-size: 20px 20px;
   margin-top: 20px;
   margin-left: 20px;
-  border: 2px solid black;
+  border: 2px solid rgb(46, 44, 44);
+  border-radius: 10px;
 }
 
 #search-box:focus {
   outline: none;
-  border-color: rgb(0, 247, 255);
-  box-shadow: 0 0 3px 1px rgb(0, 247, 255);
+  border-color: rgb(162, 215, 250);
+  box-shadow: 0 0 3px 1px rgb(162, 215, 250);
 }
 
 li img.flag {
